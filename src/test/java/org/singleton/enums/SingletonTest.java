@@ -49,6 +49,7 @@ public class SingletonTest
    @Test
    public void testEnumSingleton01()
    {
+      System.out.println( "\ntestEnumSingleton01()\n" );
       assertEquals( "DS", Singleton.INSTANCE.checkTools( "dfs" ) );
    }
    
@@ -58,6 +59,7 @@ public class SingletonTest
    @Test
    public void testEnumSingleton02()
    {
+      System.out.println( "\ntestEnumSingleton02()\n" );
       assertEquals( "RN", Singleton.INSTANCE.checkTools( "rien" ) );
    }
    
@@ -67,18 +69,21 @@ public class SingletonTest
    @Test
    public void testEnumSingleton03()
    {
+      System.out.println( "\ntestEnumSingleton03()\n" );
       assertEquals( "", Singleton.INSTANCE.checkTools( null ) );
    }
    
    @Test
    public void testEnumSingleton04() throws ClassNotFoundException, IOException
    {
+      System.out.println( "\ntestEnumSingleton04()\n" );
       assertEquals( "boolean", Singleton.INSTANCE.resolveClass( "boolean" ).getCanonicalName() );
    }
    
    @Test
    public void testEnumSingleton05()
    {
+      System.out.println( "\ntestEnumSingleton05()\n" );
       Throwable throwable = assertThrows( Throwable.class, () -> {
          Singleton.INSTANCE.resolveClass( "toto" ).getCanonicalName();
       } );
@@ -88,6 +93,7 @@ public class SingletonTest
    @Test
    public void testEnumSingleton06()
    {
+      System.out.println( "\ntestEnumSingleton06()\n" );
       System.out.println( Float.compare( 1.234512345f, 1.234512347123f ) );
       Singleton.INSTANCE.checkElements( 12, 123.34, 1234, "toto", 123.45f, "titi", true, 123, false );
    }
@@ -98,6 +104,7 @@ public class SingletonTest
    @Test
    public void testEnumSingleton07()
    {
+      System.out.println( "\ntestEnumSingleton07()\n" );
       assertEquals( "TR", Singleton.INSTANCE.checkTools( "tartour" ) );
    }
    
@@ -105,7 +112,6 @@ public class SingletonTest
    public void singletonWithReflectionTest()
    {
       System.out.println( "\nsingletonWithReflectionTest()\n" );
-      System.out.println( "\n================================================================\n" );
       /**
        * Create first instance of Singleton
        */
@@ -136,6 +142,5 @@ public class SingletonTest
          singletonB.setValue( "OneB" );
          System.out.println( singletonB.getValue() );
       }
-      System.out.println( "\n================================================================\n" );
    }
 }
