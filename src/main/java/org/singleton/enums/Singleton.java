@@ -21,6 +21,7 @@ package org.singleton.enums;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -39,6 +40,7 @@ public enum Singleton implements Serializable
     */
    private Singleton()
    {
+      remplirMap();
    }
    /**
     * 
@@ -103,7 +105,25 @@ public enum Singleton implements Serializable
     * immutable table mapping primitive type names to corresponding
     * class objects
     */
-   private final Map<String, Class<?>> primClasses = Map.of( "boolean", boolean.class, "byte", byte.class, "char", char.class, "short", short.class, "int", int.class, "long", long.class, "float", float.class, "double", double.class, "void", void.class, "integer", Integer.class );
+   private Map<String, Class<?>> primClasses = null;
+   /**
+    * 
+    */
+   private final void remplirMap()
+   {
+      primClasses = new HashMap<String, Class<?>>();
+      primClasses.put( "boolean", boolean.class );
+      primClasses.put( "byte", byte.class );
+      primClasses.put( "char", char.class );
+      primClasses.put( "short", short.class );
+      primClasses.put( "int", int.class );
+      primClasses.put( "long", long.class );
+      primClasses.put( "float", float.class );
+      primClasses.put( "double", double.class );
+      primClasses.put( "void", void.class );
+      primClasses.put( "integer", Integer.class );
+   }
+   
    /**
     * 
     * 
