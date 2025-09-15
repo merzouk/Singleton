@@ -20,6 +20,7 @@
 package org.singleton.enums;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
@@ -78,16 +79,16 @@ public class SingletonTest
    @Test
    public void testEnumSingleton05()
    {
-       Throwable throwable = assertThrows( Throwable.class, () -> {
-          Singleton.INSTANCE.resolveClass( "toto" ).getCanonicalName();
-       } );
-       assertEquals( ClassNotFoundException.class, throwable.getClass() );
+      Throwable throwable = assertThrows( Throwable.class, () -> {
+         Singleton.INSTANCE.resolveClass( "toto" ).getCanonicalName();
+      } );
+      assertEquals( ClassNotFoundException.class, throwable.getClass() );
    }
    
    @Test
    public void testEnumSingleton06()
    {
-      System.out.println( Float.compare( 1.234512345f, 1.234512347123f ));
+      System.out.println( Float.compare( 1.234512345f, 1.234512347123f ) );
       Singleton.INSTANCE.checkElements( 12, 123.34, 1234, "toto", 123.45f, "titi", true, 123, false );
    }
    
@@ -101,12 +102,7 @@ public class SingletonTest
    }
    
    @Test
-   public void singletonWithReflectionTest() throws NoSuchMethodException, 
-                                                    SecurityException, 
-                                                    InstantiationException, 
-                                                    IllegalAccessException, 
-                                                    IllegalArgumentException, 
-                                                    InvocationTargetException
+   public void singletonWithReflectionTest()
    {
       System.out.println( "\nsingletonWithReflectionTest()\n" );
       System.out.println( "\n================================================================\n" );
@@ -114,6 +110,7 @@ public class SingletonTest
        * Create first instance of Singleton
        */
       Singleton singletonA = Singleton.INSTANCE;
+      assertNotNull( singletonA );
       /**
        * 
        */
@@ -133,6 +130,7 @@ public class SingletonTest
       }
       singletonA.setValue( "OneA" );
       System.out.println( singletonA.getValue() );
+      assertEquals( null, singletonB );
       if( singletonB != null )
       {
          singletonB.setValue( "OneB" );
