@@ -19,9 +19,11 @@
 
 package org.singleton.enums;
 
+import static org.assertj.core.api.Assertions.assertThatRuntimeException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -61,6 +63,7 @@ public class SingletonTest
       System.out.println( "\ntestEnumSingleton02()\n" );
       assertEquals( "RN", Singleton.INSTANCE.checkTools( "rien" ) );
    }
+   
    /**
     * 
     */
@@ -70,6 +73,7 @@ public class SingletonTest
       System.out.println( "\ntestEnumSingleton03()\n" );
       assertEquals( "", Singleton.INSTANCE.checkTools( null ) );
    }
+   
    /**
     * 
     * @throws ClassNotFoundException
@@ -81,6 +85,7 @@ public class SingletonTest
       System.out.println( "\ntestEnumSingleton04()\n" );
       assertEquals( "boolean", Singleton.INSTANCE.resolveClass( "boolean" ).getCanonicalName() );
    }
+   
    /**
     * 
     */
@@ -93,6 +98,7 @@ public class SingletonTest
       } );
       assertEquals( ClassNotFoundException.class, throwable.getClass() );
    }
+   
    /**
     * 
     */
@@ -103,6 +109,7 @@ public class SingletonTest
       System.out.println( Float.compare( 1.234512345f, 1.234512347123f ) );
       Singleton.INSTANCE.checkElements( 12, 123.34, 1234, "toto", 123.45f, "titi", true, 123, false );
    }
+   
    /**
     * 
     */
@@ -112,6 +119,7 @@ public class SingletonTest
       System.out.println( "\ntestEnumSingleton07()\n" );
       assertEquals( "TR", Singleton.INSTANCE.checkTools( "tartour" ) );
    }
+   
    /**
     * 
     */
@@ -139,15 +147,62 @@ public class SingletonTest
       }
       catch( Exception e )
       {
-         System.err.println( e );
+         System.err.println( "Error during create second instance of Singleton : " + e );
       }
-      singletonA.setValue( "OneA" );
-      System.out.println( singletonA.getValue() );
+      singletonA.setName( "OneA" );
+      System.out.println( singletonA.getName() );
       assertEquals( null, singletonB );
       if( singletonB != null )
       {
-         singletonB.setValue( "OneB" );
-         System.out.println( singletonB.getValue() );
+         singletonB.setName( "OneB" );
+         System.out.println( singletonB.getName() );
       }
+   }
+   
+   /**
+    * 
+    */
+   @Test
+   public void singletonWithoutReflectionTest()
+   {
+      System.out.println( "\nsingletonWithoutReflectionTest()\n" );
+      /**
+       * Create first instance of Singleton and set value of name attribute
+       */
+      Singleton singletonA = Singleton.INSTANCE;
+      assertNotNull( singletonA );
+      singletonA.setName( "singletonA" );
+      Integer identityA = 123;
+      singletonA.setIdentity( identityA );
+      /**
+       * Create second instance of Singleton and set value of name attribute
+       */
+      Singleton singletonB = Singleton.INSTANCE;
+      assertNotNull( singletonB );
+      singletonB.setName( "singletonB" );
+      Integer identityB = 124;
+      singletonA.setIdentity( identityB );
+      /**
+       * Finally, instance A is equals instance B of Singleton Class 
+       */
+      assertTrue( ( singletonB.getName().equals( singletonA.getName() ) ) && ( singletonB.getIdentity().equals( singletonA.getIdentity() ) ) );
+      /**
+       * 
+       */
+      assertTrue( "singletonB".equals( singletonA.getName() ) );
+      assertTrue( identityB.equals( singletonA.getIdentity() ) );
+      /**
+       * 
+       */
+      assertTrue( "singletonB".equals( singletonB.getName() ) );
+      assertTrue( identityB.equals( singletonB.getIdentity() ) );
+      /**
+       * 
+       */
+      assertTrue( singletonA.compare( singletonB, singletonA ) );
+      /**
+       * 
+       */
+      assertTrue( singletonA.hash() == singletonA.hash() );
    }
 }

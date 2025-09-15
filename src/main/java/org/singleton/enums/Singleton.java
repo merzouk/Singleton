@@ -22,6 +22,7 @@ package org.singleton.enums;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * A Renseigner.
@@ -42,21 +43,42 @@ public enum Singleton implements Serializable
    /**
     * 
     */
-   private String value = "";
+   private String  name = "";
+   
    /**
-    * @return the value
+    * 
     */
-   public String getValue()
+   private Integer identity;
+   /**
+    * @return the name
+    */
+   public String getName()
    {
-      return this.value;
+      return this.name;
    }
    
    /**
-    * @param value the value to set
+    * @param name the name to set
     */
-   public void setValue( String value )
+   public void setName( String name )
    {
-      this.value = value;
+      this.name = name;
+   }
+   
+   /**
+    * @return the identity
+    */
+   public Integer getIdentity()
+   {
+      return identity;
+   }
+   
+   /**
+    * @param identity the identity to set
+    */
+   public void setIdentity( Integer identity )
+   {
+      this.identity = identity;
    }
    
    /**
@@ -67,10 +89,9 @@ public enum Singleton implements Serializable
    public String checkTools( String str )
    {
       if( str == null ) return "";
-      if( "rien".equalsIgnoreCase( str )) return "RN";
-      if(str.length() == 2) return str.toUpperCase();
-      
-      StringBuffer a = new StringBuffer(str);
+      if( "rien".equalsIgnoreCase( str ) ) return "RN";
+      if( str.length() == 2 ) return str.toUpperCase();
+      StringBuffer a = new StringBuffer( str );
       String r = "";
       char c = a.charAt( 0 );
       r += c;
@@ -78,22 +99,11 @@ public enum Singleton implements Serializable
       r += c;
       return r.toUpperCase();
    }
-   
    /**
     * immutable table mapping primitive type names to corresponding
     * class objects
     */
-   private final Map<String, Class<?>> primClasses =        Map.of("boolean", boolean.class,
-                                                                   "byte", byte.class,
-                                                                   "char", char.class,
-                                                                   "short", short.class,
-                                                                   "int", int.class,
-                                                                   "long", long.class,
-                                                                   "float", float.class,
-                                                                   "double", double.class,
-                                                                   "void", void.class,
-                                                                   "integer", Integer.class
-                                                                   );
+   private final Map<String, Class<?>> primClasses = Map.of( "boolean", boolean.class, "byte", byte.class, "char", char.class, "short", short.class, "int", int.class, "long", long.class, "float", float.class, "double", double.class, "void", void.class, "integer", Integer.class );
    /**
     * 
     * 
@@ -108,7 +118,7 @@ public enum Singleton implements Serializable
       Class<?> clazz = null;
       try
       {
-         clazz = primClasses.get( nameOfClass );         
+         clazz = primClasses.get( nameOfClass );
       }
       catch( Exception e )
       {
@@ -118,7 +128,7 @@ public enum Singleton implements Serializable
       {
          return clazz;
       }
-      throw new ClassNotFoundException( "Not class found : "+nameOfClass );
+      throw new ClassNotFoundException( "Not class found : " + nameOfClass );
    }
    
    /**
@@ -126,37 +136,71 @@ public enum Singleton implements Serializable
     * 
     * @param args : argument's list
     */
-   public final void checkElements(Object ... args)
+   public final void checkElements( Object... args )
    {
       int a = 0;
-      for(Object arg : args)
+      for( Object arg : args )
       {
          a++;
-         if(arg instanceof String) 
+         if( arg instanceof String )
          {
             String s = (String) arg;
-            System.out.println(a + " arg String value =>    " + s );
+            System.out.println( a + " arg String value =>    " + s );
          }
-         if(arg instanceof Integer) 
+         if( arg instanceof Integer )
          {
             int i = (Integer) arg;
-            System.out.println(a + " arg Integer value =>    " + i );
+            System.out.println( a + " arg Integer value =>    " + i );
          }
-         if(arg instanceof Double) 
+         if( arg instanceof Double )
          {
             double d = (Double) arg;
-            System.out.println(a + " arg Double value =>    " + d );
+            System.out.println( a + " arg Double value =>    " + d );
          }
-         if(arg instanceof Float)
+         if( arg instanceof Float )
          {
             float f = (Float) arg;
-            System.out.println(a + " arg Float value =>    " + f );
+            System.out.println( a + " arg Float value =>    " + f );
          }
-         if(arg instanceof Boolean)
-         {   
+         if( arg instanceof Boolean )
+         {
             boolean b = (Boolean) arg;
-            System.out.println(a + " arg Boolean value =>    " + b );
+            System.out.println( a + " arg Boolean value =>    " + b );
          }
       }
+   }
+   
+   /**
+    * 
+    */
+   public int hash()
+   {
+      return Objects.hash( name, identity );
+   }
+   
+   /**
+    * 
+    */
+   public boolean compare( Object objA, Object objB )
+   {
+      if( objA == null ) return false;
+      if( objB == null ) return false;
+      if( !objA.getClass().equals( objB.getClass() ) ) return false;
+      Singleton otherA = (Singleton) objA;
+      Singleton otherB = (Singleton) objB;
+      return Objects.equals( otherA.name, otherB.name ) && otherA.identity == otherB.identity;
+   }
+   
+   /**
+    * 
+    * @param obj
+    * @return
+    */
+   public boolean compare( Object obj )
+   {
+      if( obj == null ) return false;
+      if( getClass().equals( obj.getClass() ) ) return false;
+      Singleton other = (Singleton) obj;
+      return Objects.equals( name, other.name ) && identity == other.identity;
    }
 }
