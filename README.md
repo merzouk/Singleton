@@ -1,7 +1,7 @@
 # Singleton
 
 ## INFORMATIONS GENERALES
-  Présenter des méthodes de mettre en oeuvre le Pattern Singleton en Java.
+***Présenter des méthodes de mise en oeuvre en Java du Pattern Singleton.
 
 ### Singleton
 Montrer que le Singleton ne résiste pas quand on réalise le test avec le principe de l'introspection.
