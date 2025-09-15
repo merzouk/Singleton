@@ -123,9 +123,9 @@ public class SingletonTest
     * 
     */
    @Test
-   public void singletonWithReflectionTest()
+   public void singletonWithReflectionTest01()
    {
-      System.out.println( "\nsingletonWithReflectionTest()\n" );
+      System.out.println( "\nsingletonWithReflectionTest01()\n" );
       /**
        * Create first instance of Singleton
        */
@@ -162,6 +162,36 @@ public class SingletonTest
     * 
     */
    @Test
+   public void singletonWithReflectionTest02()
+   {
+      System.out.println( "\nsingletonWithReflectionTest02()\n" );
+      /**
+       * Create first instance of Singleton
+       */
+      Singleton singletonA = Singleton.INSTANCE;
+      assertNotNull( singletonA );
+      singletonA.setName( "OneA" );
+      System.out.println( singletonA.getName() );
+      /**
+       * 
+       */
+      //Singleton singletonB = null;
+      Throwable throwable = assertThrows( Throwable.class, () -> {
+         Constructor<?> constructor = singletonA.getClass().getDeclaredConstructor( new Class[0] );
+         constructor.setAccessible( true );
+         /**
+          * Create second instance of Singleton
+          */
+         Singleton singletonB = (Singleton) constructor.newInstance();
+         assertEquals( null, singletonB );
+      } );
+      assertEquals( NoSuchMethodException.class, throwable.getClass() );
+   }
+   
+   /**
+    * 
+    */
+   @Test
    public void singletonWithoutReflectionTest()
    {
       System.out.println( "\nsingletonWithoutReflectionTest()\n" );
@@ -184,7 +214,8 @@ public class SingletonTest
       /**
        * Finally, instance A is equals instance B of Singleton Class 
        */
-      assertTrue( ( singletonB.getName().equals( singletonA.getName() ) ) && ( singletonB.getIdentity().equals( singletonA.getIdentity() ) ) );
+      assertTrue( singletonB.getName().equals( singletonA.getName() ) );
+      assertTrue( singletonB.getIdentity().equals( singletonA.getIdentity() ) );
       /**
        * 
        */
@@ -199,6 +230,10 @@ public class SingletonTest
        * 
        */
       assertTrue( singletonA.compare( singletonB, singletonA ) );
+      /**
+       * 
+       */
+      assertTrue( singletonA.compare( singletonB ) );
       /**
        * 
        */
