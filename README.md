@@ -9,78 +9,67 @@ Montrer que le Singleton ne résiste pas quand on réalise le test avec le princ
 ### Singleton via l'Enum
 En particulier, l'usage de l'Enum introduite depuis Java 5. 
 
-========================================================================================================
 
-<Les textes d’aide sont écrits entre chevrons et sont destinés à être supprimés avant toute sauvegarde>
+# [Titre]
 
-<Un README : Pourquoi ?
+## À propos
 
-***La documentation d’un jeu de données doit être suffisante pour permettre à n’importe quel réutilisateur de comprendre et d’évaluer sa qualité. Le README fournit des informations complémentaires et accessibles lorsqu’elles ne sont pas déjà mises à disposition dans les métadonnées du jeu de données, dans les métadonnées des fichiers, et/ou dans des fichiers associés, ou des fichiers accessibles à long terme sur des services d’hébergement (entrepôt de fichiers ou publication). Dans ce dernier cas, nous vous prions d’inclure les URLs des documents en question ou leurs références***>
+[Courte description à propos de pourquoi le projet existe]
 
-<Privilégier les formats text document (.txt), ou markdown (.md)>
+## Table des matières
 
-Modèle de Fichier RDG README --- Général --- Version: 0.1 (2022-11-22) 
+- 🪧 [À propos](#à-propos)
+- 📦 [Prérequis](#prérequis)
+- 🚀 [Installation](#installation)
+- 🛠️ [Utilisation](#utilisation)
+- 🤝 [Contribution](#contribution)
+- 🏗️ [Construit avec](#construit-avec)
+- 📚 [Documentation](#documentation)
+- 🏷️ [Gestion des versions](#gestion-des-versions)
+- 📝 [Licence](#licence)
 
-Ce fichier README a été généré le [YYYY-MM-DD] par [NAME].
+## Prérequis
 
-Dernière mise-à-jour le : [YYY-MM-DD].
+[Liste de tous les éléments nécessaires pour le bon fonctionnement du projet avec description + lien vers la documentation]
 
-# INFORMATIONS GENERALES
+## Installation
 
-## Titre du jeu de données :
- 
-## DOI:
- 
-## Adresse de contact :
- 
-<Ci-après suit une liste d’éléments suggérés pour vous aider à enrichir, si nécessaire, votre documentation. La pertinence de certains dépend de la discipline du jeu de données ou du contexte de production>
+[Étapes avec exemples des commandes à lancer pour installer le projet en local]
 
-<***Supprimer toute section non-applicable***>
+## Utilisation
 
-# INFORMATIONS METHODOLOGIQUES
+[### Sous-titre + description avec exemple des commandes à lancer pour l'ensemble des actions disponibles à l'utilisation dans un mode de développement]
 
-## Conditions environnementales / experimentales : 
+## Contribution
 
-## Description des sources et méthodes utilisées pour collecter et générer les données :
-<Si applicable, décrire les standards, les informations de calibration, les instruments utilisés, etc.>
+[### Sous-titre + description avec exemple des commandes à lancer pour l'ensemble du flux de contribution sur le dépôt]
 
-## Méthodes de traitement des données :
-<Si applicable, décrire le traitement des données et inclure tout détail pouvant être important pour réutiliser ou reproduire les données. Commenter chaque étape.
-Par exemple, inclure les méthodes de nettoyage et d’analyse ; les codes et/ou algorithmes ; les procédés d’anonymisation ou de pseudonymisation pour les données sensibles concernant les humains ou des espèces menacées>
+## Construit avec
 
-## Procédures d’assurance-qualité appliquées sur les données :
+### Langages & Frameworks
 
-## Autres informations contextuelles :
-<Toute information que vous considérez importante pour évaluer la qualité du jeu de données ou pour sa réutilisation : par exemple, des informations concernant les logiciels nécessaires pour interpréter les données.
-Si applicable et non-inclus préalablement, ajouter les noms complets et les versions de tous les logiciels, de tous les paquets et de toutes les librairies nécessaires pour lire et interpréter les données *e.g.* pour compiler les scripts.>
+[Liste de tout ce qui permet la confection du projet avec description + lien vers la documentation]
 
-# APERCU DES DONNEES ET FICHIERS
+### Outils
 
+#### CI
 
-## Convention de nommage des fichiers :
+[Liste de tout ce qui permet l'intégration automatisée du projet avec description + lien vers la documentation et mise en avant des comptes, organisations et variables]
 
-## Arborescence/plan de classement des fichiers :
+#### Déploiement
 
+[Liste de tout ce qui permet le déploiement du projet avec description + lien vers la documentation et mise en avant des comptes, organisations et variables]
 
-# INFORMATIONS SPECIFIQUES AUX DONNEES POUR : [NOM DU FICHIER]
+## Documentation
 
-<Le cas échéant, reproduire cette section pour chaque dossier ou fichier.
-Les éléments se répétant peuvent être expliqués dans une section initiale commune.>
+[Lien vers documentations externes ou documentation embarquée ici avec table des matières]
 
-<Pour les données tabulaires, fournir un dictionnaire des données/manuel de codage contenant les informations suivantes :>
-## Liste des variables/entêtes de colonne :
+## Gestion des versions
 
-Pour chaque nom de variable ou entête de colonne, indiquer :
- 
-    -- le nom complet de la variable sous forme “lisible par les humains” ; 
-    -- la description de la variable ; 
-    -- unité de mesure, si applicable ; 
-    -- séparateur décimal *i.e.* virgule ou point, si applicable ; 
-    -- valeurs autorisées : liste ou plage de valeurs, ou domaine ;
-    -- format, si applicable, e.g. date>
+Afin de maintenir un cycle de publication claire et de favoriser la rétrocompatibilité, la dénomination des versions suit la spécification décrite par la [Gestion sémantique de version](https://semver.org/lang/fr/)
 
-## Code des valeurs manquantes : 
-<Definir les codes ou symboles utilisés pour les valeurs manquantes.>
+Les versions disponibles ainsi que les journaux décrivant les changements apportés sont disponibles depuis [la page des Releases][mettre le lien ici].
 
-## Informations additionnelles : 
-<Toute information que vous jugez utile pour mieux comprendre le fichier>
+## Licence
+
+Voir le fichier [LICENSE](./LICENSE.md) du dépôt.
