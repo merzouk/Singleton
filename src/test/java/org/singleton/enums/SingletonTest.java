@@ -175,7 +175,6 @@ public class SingletonTest
       /**
        * 
        */
-      //Singleton singletonB = null;
       Throwable throwable = assertThrows( Throwable.class, () -> {
          Constructor<?> constructor = singletonA.getClass().getDeclaredConstructor( new Class[0] );
          constructor.setAccessible( true );

@@ -203,7 +203,7 @@ public enum Singleton implements Serializable
    public boolean compare( Object obj )
    {
       if( obj == null ) return false;
-      if( getClass().equals( obj.getClass() ) ) return false;
+      if( !getClass().equals( obj.getClass() ) ) return false;
       Singleton other = (Singleton) obj;
       return Objects.equals( name, other.name ) && identity == other.identity;
    }
