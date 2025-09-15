@@ -62,7 +62,6 @@ public class SingletonTest
       System.out.println( "\ntestEnumSingleton02()\n" );
       assertEquals( "RN", Singleton.INSTANCE.checkTools( "rien" ) );
    }
-   
    /**
     * 
     */
@@ -72,14 +71,20 @@ public class SingletonTest
       System.out.println( "\ntestEnumSingleton03()\n" );
       assertEquals( "", Singleton.INSTANCE.checkTools( null ) );
    }
-   
+   /**
+    * 
+    * @throws ClassNotFoundException
+    * @throws IOException
+    */
    @Test
    public void testEnumSingleton04() throws ClassNotFoundException, IOException
    {
       System.out.println( "\ntestEnumSingleton04()\n" );
       assertEquals( "boolean", Singleton.INSTANCE.resolveClass( "boolean" ).getCanonicalName() );
    }
-   
+   /**
+    * 
+    */
    @Test
    public void testEnumSingleton05()
    {
@@ -89,7 +94,9 @@ public class SingletonTest
       } );
       assertEquals( ClassNotFoundException.class, throwable.getClass() );
    }
-   
+   /**
+    * 
+    */
    @Test
    public void testEnumSingleton06()
    {
@@ -97,7 +104,6 @@ public class SingletonTest
       System.out.println( Float.compare( 1.234512345f, 1.234512347123f ) );
       Singleton.INSTANCE.checkElements( 12, 123.34, 1234, "toto", 123.45f, "titi", true, 123, false );
    }
-   
    /**
     * 
     */
@@ -107,7 +113,9 @@ public class SingletonTest
       System.out.println( "\ntestEnumSingleton07()\n" );
       assertEquals( "TR", Singleton.INSTANCE.checkTools( "tartour" ) );
    }
-   
+   /**
+    * 
+    */
    @Test
    public void singletonWithReflectionTest()
    {
