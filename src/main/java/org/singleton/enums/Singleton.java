@@ -40,7 +40,6 @@ public enum Singleton implements Serializable
     */
    private Singleton()
    {
-      remplirMap();
    }
    /**
     * 
@@ -82,7 +81,28 @@ public enum Singleton implements Serializable
    {
       this.identity = identity;
    }
-   
+   /**
+    * immutable table mapping primitive type names to corresponding
+    * class objects
+    */
+   private static Map<String, Class<?>> primClasses = null;
+   /**
+    * 
+    */
+   static
+   {
+      primClasses = new HashMap<String, Class<?>>();
+      primClasses.put( "boolean", boolean.class );
+      primClasses.put( "byte", byte.class );
+      primClasses.put( "char", char.class );
+      primClasses.put( "short", short.class );
+      primClasses.put( "int", int.class );
+      primClasses.put( "long", long.class );
+      primClasses.put( "float", float.class );
+      primClasses.put( "double", double.class );
+      primClasses.put( "void", void.class );
+      primClasses.put( "integer", Integer.class );
+   }
    /**
     * 
     * @param str
@@ -100,28 +120,6 @@ public enum Singleton implements Serializable
       c = a.charAt( str.length() - 1 );
       r += c;
       return r.toUpperCase();
-   }
-   /**
-    * immutable table mapping primitive type names to corresponding
-    * class objects
-    */
-   private Map<String, Class<?>> primClasses = null;
-   /**
-    * 
-    */
-   private final void remplirMap()
-   {
-      primClasses = new HashMap<String, Class<?>>();
-      primClasses.put( "boolean", boolean.class );
-      primClasses.put( "byte", byte.class );
-      primClasses.put( "char", char.class );
-      primClasses.put( "short", short.class );
-      primClasses.put( "int", int.class );
-      primClasses.put( "long", long.class );
-      primClasses.put( "float", float.class );
-      primClasses.put( "double", double.class );
-      primClasses.put( "void", void.class );
-      primClasses.put( "integer", Integer.class );
    }
    
    /**
