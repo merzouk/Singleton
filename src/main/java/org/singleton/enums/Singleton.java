@@ -172,6 +172,7 @@ public enum Singleton implements Serializable
    
    /**
     * 
+    * @return
     */
    public int hash()
    {
@@ -180,6 +181,9 @@ public enum Singleton implements Serializable
    
    /**
     * 
+    * @param objA
+    * @param objB
+    * @return
     */
    public boolean compare( Object objA, Object objB )
    {
